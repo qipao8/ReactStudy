@@ -1,13 +1,17 @@
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
 const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 // 中间件
-app.use('/api', authRoutes);
+app.use(cors());
 app.use(express.json()); // for parsing application/json
+// 解析URL编码的请求体
+app.use(express.urlencoded({ extended: true }));
 
+app.use('/api', authRoutes);
 // 连接到MongoDB
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected'))
