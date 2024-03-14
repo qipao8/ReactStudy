@@ -1,5 +1,5 @@
 // api.js
-const BASE_URL = 'https://fictional-waddle-r6qwrp77w672p9w-4000.app.github.dev';
+const BASE_URL = 'http://localhost:4000';
 
 // 一个自定义的fetch函数，接受路径和选项作为参数
 function customFetch(path, options = {}) {
